@@ -1,7 +1,7 @@
 @extends('easycrud::views.layouts.master')
 @section('easycrud::link')
 
-@endsection
+@endsection  
 @section('easycrud::content')
    <!-- Content Header (Page header) -->
    <div class="content-header">

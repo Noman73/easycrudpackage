@@ -5,7 +5,10 @@
 Route::group(['prefix'=>'easy-crud','namespace'=>"Noman\Easycrud\Http\Controllers"],function(){
 
     Route::get('/',function(){
-        return view('easycrud::test');
+        $data=[
+            "title"=>"Test"
+        ];
+        return view('easycrud::test',compact('data'));
     });
     Route::resource('/forms',"FormController");
     Route::get('/noman',function(){
