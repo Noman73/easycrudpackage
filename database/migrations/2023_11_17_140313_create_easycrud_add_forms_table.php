@@ -16,10 +16,15 @@ return new class extends Migration
             $table->string('name',200);
             $table->string('label',200)->nullable();
             $table->string('model',200);
+            $table->string('datatable',200)->nullable();
             $table->text('styles',1000)->nullable();
-            $table->string('url',200);
-            $table->text('classes',1000);
-            $table->longText('code',100000);
+            $table->string('url',200)->nullable();
+            $table->text('classes',1000)->nullable();
+            $table->longText('before_code',100000)->default("");
+            $table->longText('after_code',100000)->default("");
+            $table->longText('validation',100000)->default("[]");
+            $table->string('message',200);
+            $table->string('column',200)->default(1);
             $table->timestamps();
         });
     }

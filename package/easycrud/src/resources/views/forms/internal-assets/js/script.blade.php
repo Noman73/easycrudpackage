@@ -36,7 +36,11 @@ window.formRequest= function(){
     let model=$('#model').val();
     let styles=$('#styles').val();
     let classes=$('#classes').val();
-    let code=$('#code').val();
+    let before_code=$('#before_code').val();
+    let after_code=$('#before_code').val();
+    let validation=$('#validation').val();
+    let message=$('#message').val();
+    let column=$('#column').val();
     let id=$('#id').val();
     let formData= new FormData();
     formData.append('name',name);
@@ -45,7 +49,11 @@ window.formRequest= function(){
     formData.append('model',model);
     formData.append('styles',styles);
     formData.append('classes',classes);
-    formData.append('code',code);
+    formData.append('before_code',before_code);
+    formData.append('after_code',after_code);
+    formData.append('validation',validation);
+    formData.append('message',message);
+    formData.append('column',column);
     $('#exampleModalLabel').text("Add New {{$data['title']}}");
     console.log(id)
     if(id!=''){

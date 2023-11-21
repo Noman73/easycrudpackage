@@ -12,6 +12,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('easycrud/assets/css/adminlte.min.css')}}">
   @yield('easycrud::link')
+  @stack('easycrud::link-head')
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">

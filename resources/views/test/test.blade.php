@@ -1,8 +1,6 @@
-@extends('easycrud::views.layouts.master')
-@section('easycrud::link')
+@extends('layouts.master')
 
-@endsection  
-@section('easycrud::content')
+@section('content')
    <!-- Content Header (Page header) -->
    <div class="content-header">
      <div class="container-fluid">
@@ -24,7 +22,7 @@
    <section class="content">
      <div class="container-fluid">
 
-       <object data="data:text/html;base64{{base64_encode($view)}}" type="text/html"></object>
+       {!! Noman\Easycrud\Easycrud::initPage($data) !!}
      </div><!-- /.container-fluid -->
      {{-- modal --}}
      <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="modal">
@@ -98,6 +96,3 @@
    </section>
  @endsection
 
- @section('easycrud::script')
- 
- @endsection

@@ -1,6 +1,6 @@
  <!-- Content Wrapper. Contains page content -->
- {{-- @extends('easycrud::views.layouts.master')
- @section('easycrud::link') --}}
+ {{-- @extends('easycrud::views.layouts.master') --}}
+ @push('easycrud-link')
  <link rel="stylesheet" href="{{asset('easycrud/assets/css/dataTables.bootstrap4.min.css')}}">
  <link rel="stylesheet" href="{{asset('easycrud/assets/css/responsive.bootstrap4.min.css')}}">
   @php
@@ -8,8 +8,8 @@
      $form_name=str_replace('_',' ',$data['form']['name']); 
 
   @endphp
- {{-- @endsection
- @section('easycrud::content') --}}
+@endpush
+ {{-- @section('easycrud::content')  --}}
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -90,7 +90,7 @@
       {{-- endmodal --}}
     </section>
   {{-- @endsection --}}
-  {{-- @section('easycrud::script') --}}
+  @push('easycrud-script')
   <script src="{{asset('easycrud/assets/js/jquery.min.js')}}"></script>
   <script src="{{asset('easycrud/assets/js/jquery.dataTables.min.js')}}"></script>
   <script src="{{asset('easycrud/assets/js/dataTables.bootstrap4.min.js')}}"></script>
@@ -98,4 +98,4 @@
   <script src="{{asset('easycrud/assets/js/responsive.bootstrap4.min.js')}}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.0/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   @include('easycrud::views.easycrud.internal-assets.js.script')
-  {{-- @endsection --}}
+  @endpush

@@ -25,6 +25,8 @@
 <script src="{{asset("easycrud/assets/js/demo.js")}}"></script>
 <!-- Page specific script -->
 @yield('easycrud::script')
+@stack('easycrud::script-footer')
+
 <script>
 $(function () {
   bsCustomFileInput.init();

@@ -18,7 +18,7 @@
         serverSide:true,
         responsive:true,
         ajax:{
-          url:"{{$data['route']}}"
+          url:"{{route('crud_maker_table')}}?name={{$data['form']['name']}}"
         },
         columns:column
     });
@@ -42,7 +42,7 @@ window.formRequest= function(){
     }
     //axios post request
     if (id==''){
-         axios.post("{{URL::to('/crud_maker/store')}}",formData)
+         axios.post("{{URL::to('/easy-crud/crud_maker/store')}}",formData)
         .then(function (response){
             if(response.data.message){
                 toastr.success(response.data.message)
@@ -58,7 +58,7 @@ window.formRequest= function(){
             }
         })
     }else{
-      axios.post("{{URL::to('crud_maker/update')}}",formData)
+      axios.post("{{URL::to('easy-crud/crud_maker/update')}}",formData)
         .then(function (response){
           if(response.data.message){
               toastr.success(response.data.message);

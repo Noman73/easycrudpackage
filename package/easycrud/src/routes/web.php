@@ -14,4 +14,6 @@ Route::group(['prefix'=>'easy-crud','namespace'=>"Noman\Easycrud\Http\Controller
     Route::get('/noman',function(){
         return view('easycrud::test');
     });
+    Route::post('/crud_maker/{type}',"CrudMakerController@call")->name('crud_maker');
+    Route::get('/crud_maker_table',"CrudMakerController@index")->name('crud_maker_table');
 });

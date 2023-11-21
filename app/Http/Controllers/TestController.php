@@ -19,21 +19,9 @@ class TestController extends Controller
            ],
            'datatable'=>[
             'name',
-            'description',
-            'keyword',
-            'parent',
+            'roll',
            ],
-           'route'=>route('forms.index'),
            'fields'=> [
-                [
-                    'name'=>'parent_id',
-                    'label'=>'Parent',
-                    'placeholder'=>'Select Parent',
-                    'type'=>'select',
-                    'classes'=>'form-control',
-                    'options'=>[],
-                    
-                ],
                 [
                     'name'=>'name',
                     'label'=>'Name',
@@ -43,25 +31,10 @@ class TestController extends Controller
                     
                 ],
                 [
-                    'name'=>'description',
-                    'label'=>'Description',
-                    'placeholder'=>'Enter Description',
-                    'type'=>'textarea',
-                    'classes'=>'form-control',
-
-                ],
-                [
                     'name'=>'keyword',
                     'label'=>'Keyword',
                     'placeholder'=>'Enter Keyword',
-                    'type'=>'textarea',
-                    'classes'=>'form-control',
-                ],
-                [
-                    'name'=>'serial',
-                    'label'=>'Serial',
-                    'placeholder'=>'Enter Keyword',
-                    'type'=>'number',
+                    'type'=>'text',
                     'classes'=>'form-control',
                 ],
             ]

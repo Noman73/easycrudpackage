@@ -2,7 +2,8 @@
 @section('easycrud::link')
 <link rel="stylesheet" href="{{asset('easycrud/assets/css/dataTables.bootstrap4.min.css')}}">
  <link rel="stylesheet" href="{{asset('easycrud/assets/css/responsive.bootstrap4.min.css')}}">
- 
+ <link href="{{asset('easycrud/assets/editor/css/cloudEdit.min.css')}}" rel="stylesheet">
+  <link href="{{asset('easycrud/assets/editor/css/contextMenu.min.css')}}" rel="stylesheet">
 @endsection
 @section('easycrud::content')
    <!-- Content Header (Page header) -->
@@ -66,7 +67,7 @@
              <form>
                <input type="hidden" id="id">
                <div class="row">
-                 <div class="col-md-8 mr-auto ml-auto">
+                 <div class="col-md-10 mr-auto ml-auto">
                    <div class="form-group">
                      <label for="recipient-name" class="col-form-label">Name:</label>
                      <input type="text" class="form-control" id="name" placeholder="Enter Name">
@@ -77,6 +78,12 @@
                       <label for="recipient-name" class="col-form-label">Label:</label>
                       <input type="text" class="form-control" id="label" placeholder="Enter Label">
                       <div class="invalid-feedback" id="label_msg">
+                      </div>
+                   </div>
+                   <div class="form-group">
+                      <label for="recipient-name" class="col-form-label">Datatable:</label>
+                      <input type="text" class="form-control" id="datatable" placeholder="Enter Table Column">
+                      <div class="invalid-feedback" id="datatable_msg">
                       </div>
                   </div>
                   <div class="form-group">
@@ -104,13 +111,36 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Code:</label>
-                    <textarea type="text" class="form-control" id="code" placeholder="Enter Code"></textarea>
-                    <div class="invalid-feedback" id="code_msg">
+                    <label for="recipient-name" class="col-form-label">Before Code:</label>
+                    <textarea type="text" class="form-control" id="before_code" placeholder="Enter Code"></textarea>
+                    <div class="invalid-feedback" id="before_code_msg">
                     </div>
                 </div>
-                 </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">After Code:</label>
+                  <textarea type="text" class="form-control" id="after_code" placeholder="Enter Code"></textarea>
+                  <div class="invalid-feedback" id="after_code_msg">
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Validation:</label>
+                  <textarea type="text" class="form-control" id="validation" placeholder="Enter Validation Array"></textarea>
+                  <div class="invalid-feedback" id="validation_msg">
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Message:</label>
+                    <input type="text" class="form-control" id="message" placeholder="Enter message">
+                    <div class="invalid-feedback" id="message_msg">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Column:</label>
+                    <input type="text" class="form-control" id="column" placeholder="Enter column">
+                    <div class="invalid-feedback" id="column_msg">
+                    </div>
+                </div>
+                </div>
                </div>
+                 </div>
              </form>
            </div>
            <div class="modal-footer">
@@ -130,5 +160,13 @@
  <script src="{{asset('easycrud/assets/js/dataTables.responsive.min.js')}}"></script>
  <script src="{{asset('easycrud/assets/js/responsive.bootstrap4.min.js')}}"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.0/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+ {{-- for editor --}}
+ <script src="{{asset('easycrud/assets/editor/js/ace/ace.js')}}" type="text/javascript" charset="utf-8"></script>
+  <script src="{{asset('easycrud/assets/editor/js/ace/ext-emmet.js')}}" type="text/javascript" charset="utf-8"></script>
+  <script src="{{asset('easycrud/assets/editor/js/ace/emmet.js')}}" type="text/javascript" charset="utf-8"></script>
+  <script src="{{asset('easycrud/assets/editor/js/jquery.ui.position.min.js')}}" type="text/javascript" charset="utf-8"></script>
+  <script src="{{asset('easycrud/assets/editor/js/contextMenu.min.js')}}" type="text/javascript" charset="utf-8"></script>
+  <script src="{{asset('easycrud/assets/editor/js/jqconsole.min.js')}}" type="text/javascript" charset="utf-8"></script>
+  <script src="{{asset('easycrud/assets/editor/js/cloudEdit.min.js')}}" type="text/javascript" charset="utf-8"></script>
  @include('easycrud::views.forms.internal-assets.js.script')
  @endsection
