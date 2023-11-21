@@ -27,11 +27,11 @@ class Easycrud{
         $crud = $data;
         $form=EasycrudForm::where("name",$crud['_name'])->first();
         unset($crud['_name']);
-        if($form->code!=null){
-            eval($form->code);
+        if($form->before_code!=null){
+            eval($form->before_code);
         }
         // return $crud;
-        $validator = Validator::make($crud, $form->validation);
+        $validator = Validator::make($crud, json_decode($form->validation));
         if ($validator->passes()) {
             $store = $form->model::create($crud);
             if(isset($form->after_code)){
@@ -40,31 +40,32 @@ class Easycrud{
             if ($store) {
                 return response()->json(['status' => true, 'message' => $form->message]);
             }
-            
         }
         return response()->json(['status' => false, 'errors' => $validator->getMessageBag()]);
     }
     public  function edit($data)
     {
-        return $this->register[$data['_name']]::find($data['id']);
+        
+        $form=EasycrudForm::where("name",$data['_name'])->first();
+        return $form->model::find($data['id']);
     }
     public  function update($data)
     {
         $crud = $data;
+
+        $form=EasycrudForm::where("name",$data['_name'])->first();
         unset($crud['_name']);
         unset($crud['form_data_id']);
-        if(isset($this->setting[$data['_name']]['addFields'])){
-          foreach($this->setting[$data['_name']]['addFields'] as $fields){
-            eval($fields);
-          }
+        if($form->before_code!=null){
+            eval($form->before_code);
         }
-        $validator = Validator::make($crud, $this->validation[$data['_name']]);
+        $validator = Validator::make($crud, json_decode($form->validation));
 
         if ($validator->passes()) {
-            $store=$this->register[$data['_name']]::find($data['form_data_id']);
+            $store=$form->model::find($data['form_data_id']);
             $get = $store->update($crud);
-            if(isset($this->setting[$data['_name']]['after_added'])){
-                eval($this->setting[$data['_name']]['after_added']);
+            if($form->after_code!=null){
+                eval($form->after_code);
             }
             if ($get) {
                 return response()->json(['status' => true, 'message' => str_replace('_', ' ', $data['_name']) . ' Updated Succes']);
@@ -74,7 +75,8 @@ class Easycrud{
     }
     public  function destroy($data)
     {
-        $del = $this->register[$data['_name']]::find($data['id'])->delete();
+        $form=EasycrudForm::where("name",$data['_name'])->first();
+        $del = $form->model::find($data['id'])->delete();
         if ($del) {
             return response()->json(['status' => true, 'message' => str_replace('_', ' ', $data['_name']) . ' Deleted Succes']);
         }

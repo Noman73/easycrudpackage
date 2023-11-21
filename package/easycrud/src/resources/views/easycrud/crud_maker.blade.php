@@ -3,10 +3,12 @@
  @push('easycrud-link')
  <link rel="stylesheet" href="{{asset('easycrud/assets/css/dataTables.bootstrap4.min.css')}}">
  <link rel="stylesheet" href="{{asset('easycrud/assets/css/responsive.bootstrap4.min.css')}}">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.10.1/sweetalert2.css" integrity="sha512-pxzljms2XK/DmQU3S58LhGyvttZBPNSw1/zoVZiYmYBvjDQW+0K7/DVzWHNz/LeiDs+uiPMtfQpgDeETwqL+1Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   @php
-     $userdata=\Noman\Easycrud\Models\EasycrudForm::where('name',$data['form']['name'])->first();
+     $formdata=\Noman\Easycrud\Models\EasycrudForm::where('name',$data['form']['name'])->first();
      $form_name=str_replace('_',' ',$data['form']['name']); 
-
+     $datatable_column=explode(',',$formdata->datatable)
   @endphp
 @endpush
  {{-- @section('easycrud::content')  --}}
@@ -15,12 +17,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">{{$userdata->label}}</h1>
+            <h1 class="m-0">{{$formdata->label}}</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">{{$userdata->label}}</li>
+              <li class="breadcrumb-item active">{{$formdata->label}}</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -30,12 +32,11 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-
         <div class="card ">
             <div class="card-header bg-dark">
               <div class="row">
                 <div class="col-6">
-                  <div class="card-title">{{$userdata->label}} </div>
+                  <div class="card-title">{{$formdata->label}} </div>
                 </div>
                 <div class="col-6">
                   <button class="btn btn-primary float-right" data-toggle="modal" data-target="#modal" data-whatever="@mdo" id="modalBtn">Add New</button>
@@ -47,7 +48,7 @@
                 <thead>
                   <tr>
                     <th>SL</th>
-                    @foreach ($data['datatable'] as $th)
+                    @foreach ($datatable_column as $th)
                     <th>{{ucwords(str_replace('_',' ',$th))}}</th>
                     @endforeach
                   </tr>
@@ -91,11 +92,12 @@
     </section>
   {{-- @endsection --}}
   @push('easycrud-script')
-  <script src="{{asset('easycrud/assets/js/jquery.min.js')}}"></script>
   <script src="{{asset('easycrud/assets/js/jquery.dataTables.min.js')}}"></script>
   <script src="{{asset('easycrud/assets/js/dataTables.bootstrap4.min.js')}}"></script>
   <script src="{{asset('easycrud/assets/js/dataTables.responsive.min.js')}}"></script>
   <script src="{{asset('easycrud/assets/js/responsive.bootstrap4.min.js')}}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.10.1/sweetalert2.min.js" integrity="sha512-lhtxV2wFeGInLAF3yN3WN/2wobmk+HuoWjyr3xgft42IY0xv4YN7Ao8VnYOwEjJH1F7I+fadwFQkVcZ6ege6kA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.0/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   @include('easycrud::views.easycrud.internal-assets.js.script')
   @endpush

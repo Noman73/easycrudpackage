@@ -1,7 +1,7 @@
 <script>
     var datatable;
     $(document).ready(function(){
-        datatable= $('#datatable').DataTable({
+        datatable= $('#datatables').DataTable({
         processing:true,
         serverSide:true,
         responsive:true,
@@ -20,6 +20,18 @@
             name:'name',
           },
           {
+            data:'label',
+            name:'label',
+          },
+          {
+            data:'model',
+            name:'model',
+          },
+          {
+            data:'url',
+            name:'url',
+          },
+          {
             data:'action',
             name:'action',
           }
@@ -32,6 +44,7 @@ window.formRequest= function(){
     $('input,select').removeClass('is-invalid');
     let name=$('#name').val();
     let label=$('#label').val();
+    let datatable=$('#datatable').val();
     let url=$('#url').val();
     let model=$('#model').val();
     let styles=$('#styles').val();
@@ -45,6 +58,7 @@ window.formRequest= function(){
     let formData= new FormData();
     formData.append('name',name);
     formData.append('label',label);
+    formData.append('datatable',datatable);
     formData.append('url',url);
     formData.append('model',model);
     formData.append('styles',styles);

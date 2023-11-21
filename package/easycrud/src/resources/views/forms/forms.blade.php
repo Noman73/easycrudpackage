@@ -39,11 +39,14 @@
              </div>
            </div>
            <div class="card-body">
-             <table class="table table-sm text-center table-bordered" id="datatable">
+             <table class="table table-sm text-center table-bordered" id="datatables">
                <thead>
                  <tr>
                    <th>SL.</th>
-                   <th>Category</th>
+                   <th>name</th>
+                   <th>label</th>
+                   <th>model</th>
+                   <th>url</th>
                    <th>Action</th>
                  </tr>
                </thead>
@@ -112,7 +115,7 @@
                 </div>
                 <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Before Code:</label>
-                    <textarea type="text" class="form-control" id="before_code" placeholder="Enter Code"></textarea>
+                    <textarea id="js" type="text" class="form-control" id="before_code" placeholder="Enter Code"></textarea>
                     <div class="invalid-feedback" id="before_code_msg">
                     </div>
                 </div>

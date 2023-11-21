@@ -14,5 +14,12 @@
         "psr-4": {
             "Noman\\Easycrud\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Noman\\Easycrud\\CrudServiceProvider"
+            ]
+        }
     }
 }

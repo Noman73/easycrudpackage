@@ -6,7 +6,7 @@
             orderable:false,
             searchable:false
           }]
-    var col=(`<?php echo json_encode($data['datatable']) ?>`);
+    var col=(`<?php echo json_encode($datatable_column) ?>`);
     var col=JSON.parse(col);
     col.forEach(item=>{
       column.push({data:item,name:item});

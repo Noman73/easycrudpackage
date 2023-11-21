@@ -42,14 +42,15 @@ class FormController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
+        // return $request->all();
         $validator=Validator::make($request->all(),[
           'name'=>"required|max:20|min:1",
           'label'=>"required|max:20|min:1",
+          'datatable'=>"required|max:20|min:1",
           'url'=>"required|max:20|min:1",
           'model'=>"required|max:20|min:1",
-          'styles'=>"required|max:200|min:1",
-          'classes'=>"required|max:200|min:1",
+          'styles'=>"nullable|max:200|min:1",
+          'classes'=>"nullable|max:200|min:1",
           'before_code'=>"nullable|max:200|min:1",
           'after_code'=>"nullable|max:200|min:1",
           'validation'=>"required|max:200|min:1",
@@ -61,6 +62,7 @@ class FormController extends Controller
           $form=new EasycrudForm;
           $form->name=$request->name;
           $form->label=$request->label;
+          $form->datatable=$request->datatable;
           $form->model=$request->model;
           $form->url=$request->url;
           $form->styles=$request->styles;
