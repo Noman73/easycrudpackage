@@ -44,16 +44,16 @@ class FormController extends Controller
     {
         // return $request->all();
         $validator=Validator::make($request->all(),[
-          'name'=>"required|max:20|min:1",
-          'label'=>"required|max:20|min:1",
-          'datatable'=>"required|max:20|min:1",
-          'url'=>"required|max:20|min:1",
+          'name'=>"required|max:200|min:1",
+          'label'=>"required|max:200|min:1",
+          'datatable'=>"required|max:200|min:1",
+          'url'=>"re quired|max:200|min:1",
           'model'=>"required|max:20|min:1",
           'styles'=>"nullable|max:200|min:1",
           'classes'=>"nullable|max:200|min:1",
-          'before_code'=>"nullable|max:200|min:1",
-          'after_code'=>"nullable|max:200|min:1",
-          'validation'=>"required|max:200|min:1",
+          'before_code'=>"nullable|max:100000|min:1",
+          'after_code'=>"nullable|max:100000|min:1",
+          'validation'=>"required|max:100000|min:1",
           'message'=>"required|max:200|min:1",
           'column'=>"required|max:200|min:1",
       ]);
