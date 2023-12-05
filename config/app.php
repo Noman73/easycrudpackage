@@ -185,6 +185,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+        'Easycrud' => \Noman\Easycrud\Easycrud::class,
     ])->toArray(),
 
 ];

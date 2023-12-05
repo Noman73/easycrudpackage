@@ -3,13 +3,14 @@
 namespace Noman\Easycrud;
 // use View;
 
-use App\Models\EasycrudForm;
+use Noman\Easycrud\Models\EasycrudForm;
 use Validator;
 class Easycrud{
-    public function __construct()
-    {
-        //  $this->initPage($data);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware(config('easycrud.middlware'));
+    //     //  $this->initPage($data);
+    // }
 
     
     public static function initPage($data)
@@ -24,15 +25,16 @@ class Easycrud{
     {
         $crud = $data;
         $form=EasycrudForm::where("name",$crud['_name'])->first();
+        $validation = str_replace(["\n"], "", $form->validation);
         unset($crud['_name']);
-        if($form->before_code!=null){
+        if($form->before_code!='null'){
             eval($form->before_code);
         }
         // return $crud;
-        $validator = Validator::make($crud, json_decode($form->validation));
+        $validator = Validator::make($crud, eval("return $validation"));
         if ($validator->passes()) {
             $store = $form->model::create($crud);
-            if(isset($form->after_code)){
+            if($form->after_code!='null'){
                 eval($form->after_code);
             }
             if ($store) {
@@ -56,7 +58,7 @@ class Easycrud{
         // return eval("return $validation");
         unset($crud['_name']);
         unset($crud['form_data_id']);
-        if($form->before_code!=null){
+        if($form->before_code!='null'){
             eval($form->before_code);
         }
         // return json_decode($form->validation);
@@ -66,7 +68,7 @@ class Easycrud{
         if ($validator->passes()) {
             $store=$form->model::find($data['form_data_id']);
             $get = $store->update($crud);
-            if($form->after_code!=null){
+            if($form->after_code!='null'){
                 eval($form->after_code);
             }
             if ($get) {
