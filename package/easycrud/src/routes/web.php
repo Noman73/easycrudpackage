@@ -12,7 +12,10 @@ Route::group(['prefix'=>'easy-crud','middleware' => config('easycrud.route_group
     });
     Route::resource('/forms',"FormController");
     Route::resource('/message',"MessageController");
+<<<<<<< HEAD
     Route::resource('/basic_setting',"BasicSettingController");
+=======
+>>>>>>> 841e79381153f148aa27f97511aa02fc1052acd1
     Route::get('/noman',function(){
         return view('easycrud::test');
     });

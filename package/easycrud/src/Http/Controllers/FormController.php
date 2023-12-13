@@ -51,14 +51,23 @@ class FormController extends Controller
           'name'=>"required|max:200|min:1",
           'label'=>"required|max:200|min:1",
           'datatable'=>"required|max:200|min:1",
+<<<<<<< HEAD
+          'url'=>"required|max:200|min:1",
+          'model'=>"required|max:200|min:1",
+          'styles'=>"nullable|max:100000|min:1",
+=======
           'url'=>"re quired|max:200|min:1",
           'model'=>"required|max:20|min:1",
           'styles'=>"nullable|max:200|min:1",
+>>>>>>> 52428e04cbe81696eb51e5b806eb5455433b3184
           'classes'=>"nullable|max:200|min:1",
           'before_code'=>"nullable|max:100000|min:1",
           'after_code'=>"nullable|max:100000|min:1",
           'validation'=>"required|max:100000|min:1",
+<<<<<<< HEAD
+=======
           'message'=>"required|max:200|min:1",
+>>>>>>> 52428e04cbe81696eb51e5b806eb5455433b3184
           'column'=>"required|max:200|min:1",
       ]);
       if($validator->passes()){
