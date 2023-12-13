@@ -9,11 +9,7 @@
         serverSide:true,
         responsive:true,
         ajax:{
-<<<<<<< HEAD
           url:"{{url('easy-crud/message')}}"
-=======
-          url:"{{url('easy-crud/forms')}}"
->>>>>>> 841e79381153f148aa27f97511aa02fc1052acd1
         },
         columns:[
           {
@@ -51,7 +47,6 @@ window.formRequest= function(){
     $('input,select').removeClass('is-invalid');
     let insert_message=$('#insert_message').val();
     let update_message=$('#update_message').val();
-<<<<<<< HEAD
     let delete_message=$('#delete_message').val();
     let id=$('#id').val();
     let formData= new FormData();
@@ -60,16 +55,6 @@ window.formRequest= function(){
     formData.append('insert_message',insert_message);
     formData.append('update_message',update_message);
     $('#exampleModalLabel').text("Add New {{$data['title']}}");
-=======
-    let detete_message=$('#detete_message').val();
-    let id=$('#id').val();
-    let formData= new FormData();
-    formData.append('detete_message',detete_message);
-    formData.append('insert_message',insert_message);
-    formData.append('update_message',update_message);
-    $('#exampleModalLabel').text("Add New {{$data['title']}}");
-    console.log(id)
->>>>>>> 841e79381153f148aa27f97511aa02fc1052acd1
     if(id!=''){
       formData.append('_method','PUT');
     }
@@ -143,28 +128,4 @@ function clear(){
   $(".invalid-feedback").text('');
 }
 
-<<<<<<< HEAD
-
-=======
-document.addEventListener('DOMContentLoaded', function () {
-    before_code = CodeMirror.fromTextArea(document.getElementById('before_code'), {
-      mode: 'php',
-      theme: 'dracula', // You can choose a different theme
-      lineNumbers: true,
-      autofocus: true,
-    });
-    after_code = CodeMirror.fromTextArea(document.getElementById('after_code'), {
-      mode: 'php',
-      theme: 'dracula', // You can choose a different theme
-      lineNumbers: true,
-      autofocus: true,
-    });
-     validation=CodeMirror.fromTextArea(document.getElementById('validation'), {
-      mode: 'javascript',
-      theme: 'dracula', // You can choose a different theme
-      lineNumbers: true,
-      autofocus: true,
-    });
-});
->>>>>>> 841e79381153f148aa27f97511aa02fc1052acd1
 </script>

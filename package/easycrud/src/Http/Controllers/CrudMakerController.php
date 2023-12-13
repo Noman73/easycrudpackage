@@ -23,6 +23,7 @@ class CrudMakerController extends Controller
             $get=$form->model::query();
             return DataTables::of($get)
               ->addIndexColumn()
+              
               ->addColumn('action', function ($get) use ($form) {
                 $button = '<div class="d-flex justify-content-center">';
                 $button .= '<a data-url="' . url('easy-crud/crud_maker/edit') . '" data-id="' . strval($get->id) . '" data-form="' . $form->name . '"  href="javascript:void(0)" class="btn btn-primary shadow btn-sm btn-xs sharp me-1 editRow"><i class="fas fa-pencil-alt"></i></a>';

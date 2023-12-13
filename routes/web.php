@@ -31,11 +31,7 @@ Route::group(['namespace'=>"App\Http\Controllers"],function(){
     Route::get('/test',"TestController@index");
     Route::get('/doyal',"DoyalController@index");
 });
-<<<<<<< HEAD
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-=======
-require __DIR__.'/auth.php';
->>>>>>> 841e79381153f148aa27f97511aa02fc1052acd1
