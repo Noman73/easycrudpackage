@@ -2,7 +2,7 @@
 
 
 
-Route::group(['prefix'=>'easy-crud','namespace'=>"Noman\Easycrud\Http\Controllers"],function(){
+Route::group(['prefix'=>'easy-crud','middleware' => config('easycrud.route_group_middleware'),'namespace'=>"Noman\Easycrud\Http\Controllers"],function(){
 
     Route::get('/',function(){
         $data=[
@@ -11,6 +11,8 @@ Route::group(['prefix'=>'easy-crud','namespace'=>"Noman\Easycrud\Http\Controller
         return view('easycrud::test',compact('data'));
     });
     Route::resource('/forms',"FormController");
+    Route::resource('/message',"MessageController");
+    Route::resource('/basic_setting',"BasicSettingController");
     Route::get('/noman',function(){
         return view('easycrud::test');
     });

@@ -18,4 +18,9 @@ Route::get('/', function () {
 });
 Route::group(['namespace'=>"App\Http\Controllers"],function(){
     Route::get('/test',"TestController@index");
+    Route::get('/doyal',"DoyalController@index");
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
