@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Noman\Easycrud\Models\EasycrudForm;
 use DataTables;
 use Validator;
-class FormController extends Controller
+class MessageController extends Controller
 {
     public function __construct()
     {
@@ -16,7 +16,7 @@ class FormController extends Controller
     public function index()
     {
         $data=[
-            'title'=>"Form"
+            'title'=>"Message"
         ];
         if(request()->ajax()){
             $get=EasycrudForm::query();
@@ -31,7 +31,7 @@ class FormController extends Controller
           })
           ->rawColumns(['action'])->make(true);
         }
-        return view('easycrud::views.forms.forms',compact('data'));
+        return view('easycrud::views.messages.message',compact('data'));
     }
     /**
      * Show the form for creating a new resource.
@@ -48,35 +48,18 @@ class FormController extends Controller
     {
         // return $request->all();
         $validator=Validator::make($request->all(),[
-          'name'=>"required|max:200|min:1",
-          'label'=>"required|max:200|min:1",
-          'datatable'=>"required|max:200|min:1",
-          'url'=>"required|max:200|min:1",
-          'model'=>"required|max:200|min:1",
-          'styles'=>"nullable|max:100000|min:1",
-          'classes'=>"nullable|max:200|min:1",
-          'before_code'=>"nullable|max:100000|min:1",
-          'after_code'=>"nullable|max:100000|min:1",
-          'validation'=>"required|max:100000|min:1",
-          'column'=>"required|max:200|min:1",
+          'insert_message'=>"required|max:200|min:1",
+          'update_message'=>"required|max:200|min:1",
+          'delete_message'=>"required|max:200|min:1",
       ]);
       if($validator->passes()){
-         
           $form=new EasycrudForm;
-          $form->name=$request->name;
-          $form->label=$request->label;
-          $form->datatable=$request->datatable;
-          $form->model=$request->model;
-          $form->url=$request->url;
-          $form->styles=$request->styles;
-          $form->classes=$request->classes;
-          $form->before_code=$request->before_code;
-          $form->after_code=$request->after_code;
-          $form->validation=$request->validation;
-          $form->column=$request->column;
+          $form->insert_message=$request->insert_message;
+          $form->update_message=$request->update_message;
+          $form->delete_message=$request->delete_message;
           $form->save();
           if ($form) {
-              return response()->json(['message'=>'Form Added Success']);
+              return response()->json(['message'=>'Message Added Success']);
           }
       }
       return response()->json(['error'=>$validator->getMessageBag()]);
@@ -103,36 +86,20 @@ class FormController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        // return $request->all();
         $validator=Validator::make($request->all(),[
-            'name'=>"required|max:200|min:1",
-            'label'=>"required|max:200|min:1",
-            'datatable'=>"required|max:200|min:1",
-            'url'=>"required|max:200|min:1",
-            'model'=>"required|max:200|min:1",
-            'styles'=>"nullable|max:100000|min:1",
-            'classes'=>"nullable|max:200|min:1",
-            'before_code'=>"nullable|max:100000|min:1",
-            'after_code'=>"nullable|max:100000|min:1",
-            'validation'=>"required|max:100000|min:1",
-            'column'=>"required|max:200|min:1",
+            'insert_message'=>"nullable|max:200|min:1",
+            'update_message'=>"nullable|max:200|min:1",
+            'delete_message'=>"nullable|max:200|min:1",
         ]);
         if($validator->passes()){
-           
             $form=EasycrudForm::find($id);
-            $form->name=$request->name;
-            $form->label=$request->label;
-            $form->datatable=$request->datatable;
-            $form->model=$request->model;
-            $form->url=$request->url;
-            $form->styles=$request->styles;
-            $form->classes=$request->classes;
-            $form->before_code=$request->before_code;
-            $form->after_code=$request->after_code;
-            $form->validation=$request->validation;
-            $form->column=$request->column;
+            $form->insert_message=$request->insert_message;
+            $form->update_message=$request->update_message;
+            $form->delete_message=$request->delete_message;
             $form->save();
             if ($form) {
-                return response()->json(['message'=>'Form Updated Success']);
+                return response()->json(['message'=>'Message Added Success']);
             }
         }
         return response()->json(['error'=>$validator->getMessageBag()]);
